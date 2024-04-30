@@ -10,11 +10,12 @@
 }
 
 .name {
-	width: 60%;
+	width: 40%;
 }
 
 .status,
-.role {
+.role,
+.action {
 	width: 20%;
 
 	display: flex;
