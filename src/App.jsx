@@ -27,12 +27,18 @@ const USERS = [
 	},
 	{
 		id: 5,
+		name: 'Ronaldo',
+		active: true,
+		role: 'teacher'
+	},
+	{
+		id: 6,
 		name: 'Jose Ivan Campos Chavez',
 		active: true,
 		role: ''
 	}
 ];
 
-const App = () => <UsersList users={USERS} />;
+const App = () => <UsersList initialUsers={USERS} />;
 
 export default App;
