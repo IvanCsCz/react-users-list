@@ -1,0 +1,9 @@
+.wrapper {
+	display: flex;
+	flex-direction: column;
+}
+
+.username {
+	color: var(--color-gray);
+	font-size: var(--text-sm);
+}

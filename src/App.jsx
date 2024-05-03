@@ -2,37 +2,37 @@ import UsersList from './components/UsersList';
 
 const USERS = [
 	{
-		id: 1,
-		name: 'Luis',
+		username: 'Luis',
+		name: 'Luis Caudillo Torres',
 		active: true,
 		role: 'student'
 	},
 	{
-		id: 2,
-		name: 'Yola',
+		username: 'Yola',
+		name: 'Yolanda Ramos Ramos',
 		active: true,
 		role: 'teacher'
 	},
 	{
-		id: 3,
-		name: 'Gus',
+		username: 'Gus',
+		name: 'Gustavo Aguayo Yañez',
 		active: true,
 		role: 'teacher'
 	},
 	{
-		id: 4,
-		name: 'Vale',
+		username: 'Vale',
+		name: 'Valeria Dominguez',
 		active: false,
 		role: 'student'
 	},
 	{
-		id: 5,
-		name: 'Ronaldo',
+		username: 'Rona',
+		name: 'Oscar Ronaldo Rodriguez Vega',
 		active: true,
 		role: 'teacher'
 	},
 	{
-		id: 6,
+		username: 'Ivan',
 		name: 'Jose Ivan Campos Chavez',
 		active: true,
 		role: ''
