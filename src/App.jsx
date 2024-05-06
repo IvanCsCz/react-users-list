@@ -33,7 +33,7 @@ const USERS = [
 	},
 	{
 		username: 'Ivan',
-		name: 'Jose Ivan Campos Chavez',
+		name: 'José Iván Campos Chavez',
 		active: true,
 		role: ''
 	}

@@ -13,7 +13,7 @@ const UsersList = ({ initialUsers }) => {
 
 	return (
 		<div className={style.list}>
-			<h1>Lista de usuarios</h1>
+			<h1 className={style.title}>Listado de usuarios</h1>
 			<UsersListFilters
 				search={search}
 				onlyActive={onlyActive}
@@ -50,11 +50,19 @@ const useFilters = () => {
 			sortBy
 		});
 
-	const setOnlyActive = (onlyActive) =>
+	const setOnlyActive = (onlyActive) => {
+		if (onlyActive && filters.sortBy === 3) {
+			setFilters({
+				...filters,
+				onlyActive,
+				sortBy: 0
+			});
+		}
 		setFilters({
 			...filters,
 			onlyActive
 		});
+	};
 
 	return { ...filters, setSearch, setOnlyActive, setSortBy };
 };
@@ -71,18 +79,32 @@ const filterUsersByName = (users, search) => {
 	const lowerCaseSearch = search.toLowerCase();
 
 	return users.filter((user) =>
-		user.name.toLowerCase().startsWith(lowerCaseSearch)
+		user.name.toLowerCase().includes(lowerCaseSearch)
 	);
 };
 
 const sortUsers = (users, sortBy) => {
 	const sortedUsers = [...users];
+
 	switch (sortBy) {
 		case 1:
 			return sortedUsers.sort((a, b) => {
 				if (a.name > b.name) return 1;
 				if (a.name < b.name) return -1;
 				return 0;
+			});
+		case 2:
+			return sortedUsers.sort((a, b) => {
+				if (a.role === b.role) return 0;
+				if (a.role === 'teacher') return -1;
+				if (a.role === 'student' && b.role === 'other') return -1;
+				return 1;
+			});
+		case 3:
+			return sortedUsers.sort((a, b) => {
+				if (a.active === b.active) return 0;
+				if (a.active && !b.active) return -1;
+				return 1;
 			});
 		default:
 			return sortedUsers;

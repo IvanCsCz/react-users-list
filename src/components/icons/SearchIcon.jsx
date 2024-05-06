@@ -1,4 +1,4 @@
-const XCircleIcon = (props) => (
+const SearchIcon = (props) => (
 	<svg
 		{...props}
 		data-slot='icon'
@@ -12,9 +12,9 @@ const XCircleIcon = (props) => (
 		<path
 			strokeLinecap='round'
 			strokeLinejoin='round'
-			d='m9.75 9.75 4.5 4.5m0-4.5-4.5 4.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z'
+			d='m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z'
 		></path>
 	</svg>
 );
 
-export default XCircleIcon;
+export default SearchIcon;
