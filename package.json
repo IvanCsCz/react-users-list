@@ -6,7 +6,8 @@
 		"build": "vite build",
 		"preview": "vite preview",
 		"format": "prettier --write .",
-		"lint": "eslint . --ext .js,.jsx --fix"
+		"lint": "eslint . --ext .js,.jsx --fix",
+		"server": "json-server ./users.json -p 4000"
 	},
 	"dependencies": {
 		"react": "18.2.0",
@@ -21,7 +22,8 @@
 		"eslint-plugin-n": "15.3.0",
 		"eslint-plugin-promise": "6.1.1",
 		"eslint-plugin-react": "7.31.10",
-		"eslint-plugin-react-hooks": "^4.6.2",
+		"eslint-plugin-react-hooks": "4.6.2",
+		"json-server": "1.0.0-alpha.23",
 		"prettier": "2.7.1",
 		"vite": "3.2.0"
 	}
