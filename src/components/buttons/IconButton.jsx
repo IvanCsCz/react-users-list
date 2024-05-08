@@ -25,7 +25,7 @@ const IconButtton = ({
 	return (
 		<button
 			{...props}
-			className={`${style.button} ${kindClassName} ${className}`}
+			className={`${style.button} ${kindClassName} ${className || ''}`}
 		>
 			<Icon className={style.icon}></Icon>
 		</button>
