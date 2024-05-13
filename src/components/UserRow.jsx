@@ -1,3 +1,5 @@
+import { useContext } from 'react';
+import { UserFormsContext } from '../lib/contexts/UserFormsContext';
 import UserDisplay from './UserDisplay';
 import UserRole from './UserRole';
 import style from './UserRow.module.css';
@@ -6,15 +8,8 @@ import IconButtton from './buttons/IconButton';
 import PencilIcon from './icons/PencilIcon';
 import TrashIcon from './icons/TrashIcon';
 
-const UserRow = ({
-	id,
-	username,
-	name,
-	active,
-	role,
-	setEditForm,
-	setDeleteForm
-}) => {
+const UserRow = ({ id, username, name, active, role }) => {
+	const { setEditForm, setDeleteForm } = useContext(UserFormsContext);
 	return (
 		<div className={style.user}>
 			<div className={style.name}>

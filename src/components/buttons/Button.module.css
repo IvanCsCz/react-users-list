@@ -3,6 +3,7 @@
 	padding: 0 1rem;
 	border: 1px solid;
 	outline: none;
+	cursor: pointer;
 	box-shadow: var(--shadow-sm);
 	border-radius: var(--radius-sm);
 }
