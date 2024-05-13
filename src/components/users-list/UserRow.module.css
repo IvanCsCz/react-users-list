@@ -1,6 +1,8 @@
-.user {
+.wrapper {
 	display: flex;
 	align-items: center;
+
+	width: 100%;
 
 	box-shadow: var(--shadow-sm);
 	border-radius: var(--radius-md);
