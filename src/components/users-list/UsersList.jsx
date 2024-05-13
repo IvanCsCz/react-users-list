@@ -1,12 +1,12 @@
-import { useFilters } from '../lib/hooks/useFilters';
-import { useUsers } from '../lib/hooks/useUsers';
-import { getUsersToDisplay } from '../lib/users/filterUsers';
+import { useFilters } from '../../lib/hooks/useFilters';
+import { useUsers } from '../../lib/hooks/useUsers';
+import { getUsersToDisplay } from '../../lib/users/filterUsers';
+import UsersListRows from '../UsersListRows';
+import UserFormsProvider from '../providers/UserFormsProvider';
+import UserFormContainer from '../user-forms/UserFormContainer';
 import style from './UsersList.module.css';
 import UsersListFilters from './UsersListFilters';
 import UsersListPagination from './UsersListPagination';
-import UsersListRows from './UsersListRows';
-import UserFormsProvider from './providers/UserFormsProvider';
-import UserFormContainer from './user-forms/UserFormContainer';
 
 const UsersList = () => {
 	const {

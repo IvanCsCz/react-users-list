@@ -1,6 +1,6 @@
+import PageSelector from '../forms/PageSelector';
+import Select from '../forms/Select';
 import style from './UsersListPagination.module.css';
-import PageSelector from './forms/PageSelector';
-import Select from './forms/Select';
 
 const UsersListPagination = ({
 	page,
