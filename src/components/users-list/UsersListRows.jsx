@@ -1,4 +1,4 @@
-import UserRow from './users-list/UserRow';
+import UserRow from './UserRow';
 
 const UsersListRows = ({ users, error, loading }) => {
 	if (loading) return <p>Cargando usuarios...</p>;
