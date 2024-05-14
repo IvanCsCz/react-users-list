@@ -11,13 +11,11 @@ export const useUsers = (filters) => {
 
 	const setData = (newData, newCount) =>
 		setUsers({ data: newData, count: newCount, loading: false, error: false });
+
 	const setError = () =>
 		setUsers({ data: [], count: 0, loading: false, error: true });
-	// const reloadUsers = () => setUsers({ data: [], loading: true, error: false });
 
 	useEffect(() => {
-		// if(!users.loading) return
-
 		const controller = new AbortController();
 
 		loadUsers(setData, setError, controller.signal, filters);
