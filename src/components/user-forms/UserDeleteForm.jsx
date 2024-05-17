@@ -4,41 +4,45 @@ import { UserFormsContext } from '../../lib/contexts/UserFormsContext';
 import Button from '../buttons/Button';
 import style from './UserDeleteForm.module.css';
 
-const UserDeleteForm = () => {
-	const { onSuccess, currentUser, setFiltersForm } =
-		useContext(UserFormsContext);
+const UserDeleteForm = ({ currentUser, closeModal }) => {
+	const { onSuccess } = useContext(UserFormsContext);
 
 	const [isSubmitting, setIsSubmitting] = useState(false);
 
 	return (
 		<form
+			className={style.form}
 			onSubmit={(ev) =>
-				handleSubmit(ev, currentUser.id, setIsSubmitting, onSuccess)
+				handleSubmit(ev, currentUser.id, setIsSubmitting, onSuccess, closeModal)
 			}
 		>
-			<p className={style.text}>
+			<p>
 				¿Estás seguro de que quieres eliminar al usuario {'"'}
 				{currentUser.name}
 				{'"'}?
 			</p>
-			<div className={style.row}>
-				<Button
-					type='button'
-					kind='secondary'
-					onClick={setFiltersForm}
-					disabled={isSubmitting}
-				>
-					{isSubmitting ? 'Cargando...' : 'Cancelar'}
-				</Button>
-				<Button type='submit' disabled={isSubmitting}>
-					{isSubmitting ? 'Cargando...' : 'Eliminar usuario'}
-				</Button>
-			</div>
+			<Button
+				type='button'
+				kind='secondary'
+				onClick={closeModal}
+				disabled={isSubmitting}
+			>
+				{isSubmitting ? 'Cargando...' : 'Cancelar'}
+			</Button>
+			<Button type='submit' disabled={isSubmitting}>
+				{isSubmitting ? 'Cargando...' : 'Eliminar usuario'}
+			</Button>
 		</form>
 	);
 };
 
-const handleSubmit = async (ev, userId, setIsSubmitting, onSuccess) => {
+const handleSubmit = async (
+	ev,
+	userId,
+	setIsSubmitting,
+	onSuccess,
+	closeModal
+) => {
 	ev.preventDefault();
 
 	setIsSubmitting(true);
@@ -47,6 +51,7 @@ const handleSubmit = async (ev, userId, setIsSubmitting, onSuccess) => {
 
 	if (success) {
 		onSuccess();
+		closeModal();
 	} else setIsSubmitting(false);
 };
 

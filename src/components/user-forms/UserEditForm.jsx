@@ -16,16 +16,17 @@ import InputTextAsync from '../forms/InputTextAsync';
 import Select from '../forms/Select';
 import style from './UserEditForm.module.css';
 
-const UserEditForm = () => {
+const UserEditForm = ({ currentUser, closeModal }) => {
 	const [isSubmitting, setIsSubmitting] = useState(false);
 
-	const { onSuccess, currentUser } = useContext(UserFormsContext);
+	const { onSuccess } = useContext(UserFormsContext);
 
 	const { name, username, role, active, dispatchFormValues, isFormInvalid } =
 		useEditForm(currentUser);
 
 	return (
 		<form
+			className={style.form}
 			onSubmit={(ev) =>
 				handleSubmit(
 					ev,
@@ -37,65 +38,66 @@ const UserEditForm = () => {
 						active
 					},
 					setIsSubmitting,
-					onSuccess
+					onSuccess,
+					closeModal
 				)
 			}
 		>
-			<div className={style.row}>
-				<InputText
-					className={style.input}
-					label='nombre'
-					placeholder='John Doe'
-					error={name.error}
-					value={name.value}
-					onChange={(ev) => dispatchFormValues(nameChanged(ev.target.value))}
-				/>
-				<InputTextAsync
-					className={style.input}
-					label='Username'
-					placeholder='johndoe'
-					success={
-						username.value !== currentUser.username &&
-						!username.loading &&
-						!username.error
-					}
-					loading={username.loading}
-					error={username.error}
-					value={username.value}
+			<InputText
+				label='nombre'
+				placeholder='John Doe'
+				error={name.error}
+				value={name.value}
+				onChange={(ev) => dispatchFormValues(nameChanged(ev.target.value))}
+			/>
+			<InputTextAsync
+				label='Username'
+				placeholder='johndoe'
+				success={
+					username.value !== currentUser.username &&
+					!username.loading &&
+					!username.error
+				}
+				loading={username.loading}
+				error={username.error}
+				value={username.value}
+				onChange={(ev) =>
+					dispatchFormValues(
+						usernameChanged(ev.target.value, currentUser.username)
+					)
+				}
+			/>
+			<Select
+				value={role}
+				onChange={(ev) => dispatchFormValues(roleChanged(ev.target.value))}
+			>
+				<option value={USER_ROLES.TEACHER}>Profesor</option>
+				<option value={USER_ROLES.STUDENT}>Alumno</option>
+				<option value={USER_ROLES.OTHER}>Otro</option>
+			</Select>
+			<div className={style.active}>
+				<InputCheckbox
+					checked={active}
 					onChange={(ev) =>
-						dispatchFormValues(
-							usernameChanged(ev.target.value, currentUser.username)
-						)
+						dispatchFormValues(activeChanged(ev.target.checked))
 					}
 				/>
+				<span>¿Activo?</span>
 			</div>
-			<div className={style.row}>
-				<Select
-					value={role}
-					onChange={(ev) => dispatchFormValues(roleChanged(ev.target.value))}
-				>
-					<option value={USER_ROLES.TEACHER}>Profesor</option>
-					<option value={USER_ROLES.STUDENT}>Alumno</option>
-					<option value={USER_ROLES.OTHER}>Otro</option>
-				</Select>
-				<div className={style.active}>
-					<InputCheckbox
-						checked={active}
-						onChange={(ev) =>
-							dispatchFormValues(activeChanged(ev.target.checked))
-						}
-					/>
-					<span>¿Activo?</span>
-				</div>
-				<Button type='submit' disabled={isFormInvalid || isSubmitting}>
-					{isSubmitting ? 'Cargando...' : 'Editar usuario'}
-				</Button>
-			</div>
+			<Button type='submit' disabled={isFormInvalid || isSubmitting}>
+				{isSubmitting ? 'Cargando...' : 'Editar usuario'}
+			</Button>
 		</form>
 	);
 };
 
-const handleSubmit = async (ev, user, setIsSubmitting, onSuccess) => {
+const handleSubmit = async (
+	ev,
+	user,
+	setIsSubmitting,
+	onSuccess,
+	closeModal
+) => {
 	ev.preventDefault();
 
 	setIsSubmitting(true);
@@ -104,6 +106,7 @@ const handleSubmit = async (ev, user, setIsSubmitting, onSuccess) => {
 
 	if (success) {
 		onSuccess();
+		closeModal();
 	} else setIsSubmitting(false);
 };
 
