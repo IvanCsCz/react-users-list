@@ -9,7 +9,7 @@ const UserStatus = ({ active }) => {
 	return (
 		<div className={activeClassName}>
 			<Icon className={style.icon} />
-			<span>{active ? 'Activo' : 'Inactivo'}</span>
+			<span>{active ? 'Active' : 'Inactive'}</span>
 		</div>
 	);
 };

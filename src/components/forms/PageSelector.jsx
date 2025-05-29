@@ -16,7 +16,7 @@ const PageSelector = ({ page, setPage, totalPages }) => {
 				onClick={() => setPage(page - 1)}
 			/>
 			<span>
-				Página {page} de {totalPages || 1}
+				Page {page} of {totalPages || 1}
 			</span>
 			<IconButtton
 				filled

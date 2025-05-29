@@ -27,7 +27,7 @@ const UsersListPagination = ({
 					</option>
 				))}
 			</Select>
-			<p>Elementos por página</p>
+			<p>Items per page</p>
 		</div>
 		<PageSelector
 			page={page}

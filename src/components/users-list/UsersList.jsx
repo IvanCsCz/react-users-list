@@ -25,7 +25,7 @@ const UsersList = () => {
 
 	return (
 		<div className={style.list}>
-			<h1 className={style.title}>Listado de usuarios</h1>
+			<h1 className={style.title}>User list</h1>
 			<AlertBox />
 			<UserFormsContext.Provider
 				value={{ onSuccess: () => dispatchFilters(reset()) }}

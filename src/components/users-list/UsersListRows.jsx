@@ -3,9 +3,9 @@ import UserRow from './UserRow';
 import style from './UsersListRows.module.css';
 
 const UsersListRows = ({ users, error, loading, showRowsFormat }) => {
-	if (loading) return <p>Cargando usuarios...</p>;
-	if (error) return <p>Error al cargar los usuarios</p>;
-	if (!users.length) return <p>No hay usuarios</p>;
+	if (loading) return <p>Loading users...</p>;
+	if (error) return <p>Error loading users</p>;
+	if (!users.length) return <p>No users available</p>;
 
 	const UserComponent = showRowsFormat ? UserRow : UserCard;
 
